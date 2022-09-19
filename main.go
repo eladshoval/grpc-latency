@@ -48,7 +48,7 @@ func main() {
 		if len(listenPort) == 0 {
 			listenPort = "80"
 		}
-		address := "127.0.0.1" + ":" + listenPort
+		address := "0.0.0.0" + ":" + listenPort
 		log.Printf("workMode = %s, address = %s", workMode, address)
 		startServer(address)
 	}
