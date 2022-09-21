@@ -10,8 +10,11 @@ import (
 	"time"
 )
 
-func startClient(target string, msgLen int, delayBetweenMsgsMs int) {
-	conn, err := grpc.Dial(target, grpc.WithTransportCredentials(insecure.NewCredentials()))
+func startClient(target string, msgLen int, delayBetweenMsgsMs int, writeBufferSize int, initialWindowSize int32, initialConnWindowSize int32) {
+	conn, err := grpc.Dial(target, grpc.WithTransportCredentials(insecure.NewCredentials()),
+		grpc.WithWriteBufferSize(writeBufferSize),
+		grpc.WithInitialConnWindowSize(initialConnWindowSize),
+		grpc.WithInitialWindowSize(initialWindowSize))
 	if err != nil {
 		log.Fatalf("did not connect: %v", err)
 		return
@@ -34,8 +37,8 @@ func startClient(target string, msgLen int, delayBetweenMsgsMs int) {
 		duration := time.Now().Sub(start)
 		sum += duration.Microseconds()
 		count++
-		log.Printf("Greeting: rate of every %v ms, duration = %v, count = %v, avg = %v",
-			delayBetweenMsgsMs, duration, count, sum/count)
+		log.Printf("Greeting: rate of every %v ms, msgLen = %v, duration = %v, count = %v, avg = %v",
+			delayBetweenMsgsMs, msgLen, duration, count, sum/count)
 	}
 }
 
