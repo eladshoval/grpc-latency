@@ -41,26 +41,27 @@ func main() {
 			delayBetweenMsgsMs = 2000
 		}
 
-		writeBufferSizeStr := os.Getenv("WR_BUF")
-		writeBufferSize, err := strconv.Atoi(writeBufferSizeStr)
-		if err != nil {
-			writeBufferSize = 64 * 1024 * 1024
-		}
+		//writeBufferSizeStr := os.Getenv("WR_BUF")
+		//writeBufferSize, err := strconv.Atoi(writeBufferSizeStr)
+		//if err != nil {
+		//	writeBufferSize = 64 * 1024 * 1024
+		//}
+		//
+		//initialWindowSizeStr := os.Getenv("WIN_SIZE")
+		//initialWindowSize, err := strconv.Atoi(initialWindowSizeStr)
+		//if err != nil {
+		//	initialWindowSize = 128 * 1024 * 1024
+		//}
+		//
+		//initialConnWindowSizeStr := os.Getenv("CONN_WIN_SIZE")
+		//initialConnWindowSize, err := strconv.Atoi(initialConnWindowSizeStr)
+		//if err != nil {
+		//	initialConnWindowSize = 128 * 1024 * 1024
+		//}
 
-		initialWindowSizeStr := os.Getenv("WIN_SIZE")
-		initialWindowSize, err := strconv.Atoi(initialWindowSizeStr)
-		if err != nil {
-			initialWindowSize = 128 * 1024 * 1024
-		}
-
-		initialConnWindowSizeStr := os.Getenv("CONN_WIN_SIZE")
-		initialConnWindowSize, err := strconv.Atoi(initialConnWindowSizeStr)
-		if err != nil {
-			initialConnWindowSize = 128 * 1024 * 1024
-		}
-
-		log.Printf("workMode = %s, address = %s, msgLen = %v, delayBetweenMsgsMs = %v, writeBufferSize = %v, initialWindowSize = %v, initialConnWindowSize = %v", workMode, address, msgLen, delayBetweenMsgsMs, writeBufferSize, initialWindowSize, initialConnWindowSize)
-		startClient(address, msgLen, delayBetweenMsgsMs, writeBufferSize, int32(initialWindowSize), int32(initialConnWindowSize))
+		//log.Printf("workMode = %s, address = %s, msgLen = %v, delayBetweenMsgsMs = %v, writeBufferSize = %v, initialWindowSize = %v, initialConnWindowSize = %v", workMode, address, msgLen, delayBetweenMsgsMs, writeBufferSize, initialWindowSize, initialConnWindowSize)
+		//startClient(address, msgLen, delayBetweenMsgsMs, writeBufferSize, int32(initialWindowSize), int32(initialConnWindowSize))
+		startClient(address, msgLen, delayBetweenMsgsMs)
 	} else {
 
 		// Server

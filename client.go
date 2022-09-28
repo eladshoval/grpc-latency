@@ -10,11 +10,9 @@ import (
 	"time"
 )
 
-func startClient(target string, msgLen int, delayBetweenMsgsMs int, writeBufferSize int, initialWindowSize int32, initialConnWindowSize int32) {
-	conn, err := grpc.Dial(target, grpc.WithTransportCredentials(insecure.NewCredentials()),
-		grpc.WithWriteBufferSize(writeBufferSize),
-		grpc.WithInitialConnWindowSize(initialConnWindowSize),
-		grpc.WithInitialWindowSize(initialWindowSize))
+//func startClient(target string, msgLen int, delayBetweenMsgsMs int, writeBufferSize int, initialWindowSize int32, initialConnWindowSize int32) {
+func startClient(target string, msgLen int, delayBetweenMsgsMs int) {
+	conn, err := grpc.Dial(target, grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil {
 		log.Fatalf("did not connect: %v", err)
 		return
