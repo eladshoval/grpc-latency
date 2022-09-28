@@ -8,6 +8,9 @@ import (
 )
 
 func main() {
+
+	log.SetFlags(log.LstdFlags | log.Lmicroseconds)
+
 	workMode := os.Getenv("WORK_MODE")
 
 	if strings.EqualFold(workMode, "client") {
