@@ -27,4 +27,5 @@ COPY --from=builder /go/bin/app /
 # adjust environment for production purposes
 ENV ENVIRONMENT=production
 ENV GRPC_GO_LOG_SEVERITY_LEVEL=debug
+ENV GODEBUG="http2debug=2"
 ENTRYPOINT ["/pokemon"]
